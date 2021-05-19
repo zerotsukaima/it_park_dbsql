@@ -15,3 +15,4 @@ cursor.execute(''' CREATE TABLE tables
                    users          TEXT); ''')
 
 cursor.close()
+

@@ -46,7 +46,8 @@ def login():
                 flag = 0
                 check_pas(row[1], user)
         conn.close()
-    not_user(user, flag)
+        if flag == 1:
+            not_user(user)
 
 def check_pas(pas, user):
     password = input('\nВведите пароль:\n')
@@ -66,23 +67,22 @@ def check_pas(pas, user):
             print('\nНекорректный ввод.\n')
             start()
 
-def not_user(user, flag):
-    if flag == 1:
-        print(f'\nПользватель с логином {user} не найден.\nВозможно, Вы ошиблись '
-              f'при вводе данных либо Вы еще не зарегистрированы.\n')
-        step = input('Выберите дальнейшее действие:\n'
-                     '1 - повторить ввод логина.\n'
-                     '2 - перейти к регистрации.\n'
-                     '3 - выход в главное меню.\n')
-        if step == '1':
-            login()
-        elif step == '2':
-            user_add()
-        elif step == '3':
-            start()
-        else:
-            print('\nНекорректный ввод.\n')
-            start()
+def not_user(user):
+    print(f'\nПользватель с логином {user} не найден.\nВозможно, Вы ошиблись '
+          f'при вводе данных либо Вы еще не зарегистрированы.\n')
+    step = input('Выберите дальнейшее действие:\n'
+                 '1 - повторить ввод логина.\n'
+                 '2 - перейти к регистрации.\n'
+                 '3 - выход в главное меню.\n')
+    if step == '1':
+        login()
+    elif step == '2':
+        user_add()
+    elif step == '3':
+        start()
+    else:
+        print('\nНекорректный ввод.\n')
+        start()
 
 def user_add():
     user = input('\nПридумайте логин (не менее 3-х символов):\n')
