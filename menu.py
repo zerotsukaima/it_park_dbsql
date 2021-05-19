@@ -123,7 +123,6 @@ def in_system(user):
     elif step == '2':
         table_show(user)
     elif step == '3':
-        print('\nПожалуйста, выберите действие:\n')
         start()
     else:
         print('\nНекорректный ввод.\n')
