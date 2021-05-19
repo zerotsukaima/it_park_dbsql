@@ -205,7 +205,7 @@ def select_table(user, full, read):
         for row in cursor.execute('SELECT name_tab from tables'):
             for i in row:
                 if table == i:
-                    flag = 2
+                    flag = 1
                     for i in full:
                         if i == table:
                             flag = 2
