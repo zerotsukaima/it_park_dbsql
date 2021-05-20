@@ -510,6 +510,11 @@ def access(user, table):
         read_access(user, table)
     elif level == '2':
         full_access(user, table)
+    elif level == '0':
+        in_system(user)
+    else:
+        print('Пожалуйста, проверьте корректность введенных данных.')
+        access(user, table)
 
 def full_access(user, table):
     a = []
