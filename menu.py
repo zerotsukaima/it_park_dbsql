@@ -449,7 +449,7 @@ def replace_data(user, table):
         for i in columns:
             if i == column:
                 flag = 1
-                for row in cursor.execute(f"SELECT id, {column} from {table}"):
+                for row in cursor.execute(f"SELECT id, {column} from '{table}'"):
                     id.append(row[0])
                     d.append(row[1])
                 print(f'\nДанные по столбцу {column}:')
@@ -461,7 +461,7 @@ def replace_data(user, table):
                         flag = 2
                         ind = d.index(i)
                         swap = input('Введите новые данные:\n')
-                        conn.execute(f"UPDATE {table} set {column} = '{swap}' where id = {id[ind]}")
+                        conn.execute(f"UPDATE '{table}' set {column} = '{swap}' where id = {id[ind]}")
                         print(f'Информаця {data} столбца {column} таблицы {table} заменена на {swap}.')
                         conn.commit()
                         conn.close()
