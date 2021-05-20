@@ -328,7 +328,7 @@ def show_column(user, table, column):
     conn = sqlite3.connect('db.sqlite')
     cursor = conn.cursor()
     print(f'Данные по столбцу {column} таблицы {table}:\n')
-    for row in cursor.execute(f"SELECT {column} FROM {table}"):
+    for row in cursor.execute(f"SELECT {column} FROM '{table}'"):
         print('---------')
         print(*row)
     conn.close()
@@ -406,7 +406,7 @@ def delete_data(user, table):
         for i in columns:
             if i == column:
                 flag = 1
-                for row in cursor.execute(f"SELECT {column} from {table}"):
+                for row in cursor.execute(f"SELECT {column} from '{table}'"):
                     d.append(*row)
                 print(f'Данные столбца {column}:\n')
                 for i in d:
@@ -416,7 +416,7 @@ def delete_data(user, table):
                     print(i)
                     if str(i) == data:
                         flag = 2
-                        conn.execute(f"DELETE from {table} where {column} = '{data}'")
+                        conn.execute(f"DELETE from '{table}' where {column} = '{data}'")
                         conn.commit()
                         print(f'Информаця {data} из столбца {column} таблицы {table} удалена.')
                         in_system(user)
